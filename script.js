@@ -79,7 +79,17 @@
   function normalize(str) {
     if (!str) return '';
     return str.toLowerCase()
+      // Hapus tashkeel / harakat Arab
       .replace(/[\u0610-\u065f\u06D6-\u06DC\u06DF-\u06E4\u06E7\u06E8\u06EA-\u06ED]/g, '')
+      // Samakan variasi Alef (أ إ آ ٱ → ا)
+      .replace(/[\u0623\u0625\u0622\u0671]/g, '\u0627')
+      // Samakan Ta Marbuta ke Ha (ة → ه)
+      .replace(/\u0629/g, '\u0647')
+      // Samakan Alef Maqsura ke Ya (ى → ي)
+      .replace(/\u0649/g, '\u064A')
+      // Hapus tatweel / kashida (ـ)
+      .replace(/\u0640/g, '')
+      // Normalisasi transliterasi latin
       .replace(/[āàáâ]/g, 'a')
       .replace(/[ūùúû]/g, 'u')
       .replace(/[īìíî]/g, 'i')
