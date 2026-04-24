@@ -79,8 +79,8 @@
   function normalize(str) {
     if (!str) return '';
     return str.toLowerCase()
-      // Hapus tashkeel / harakat Arab
-      .replace(/[\u0610-\u065f\u06D6-\u06DC\u06DF-\u06E4\u06E7\u06E8\u06EA-\u06ED]/g, '')
+      // Hapus tashkeel / harakat Arab (HANYA harakat, bukan huruf)
+      .replace(/[\u0610-\u061A\u064B-\u065F\u0670]/g, '')
       // Samakan variasi Alef (أ إ آ ٱ → ا)
       .replace(/[\u0623\u0625\u0622\u0671]/g, '\u0627')
       // Samakan Ta Marbuta ke Ha (ة → ه)
